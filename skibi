@@ -1,1 +1,7 @@
-loadstring(game:HttpGet('https://pastefy.app/Youpy2N9/raw'))()
+function loadPastefyScript(code)
+    local fmt = "https://pastefy.app/%s/raw"
+    local url = string.format(fmt, code)
+    return loadstring(game:HttpGet(url))()
+end
+
+loadPastefyScript("Youpy2N9")

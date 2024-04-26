@@ -1,24 +1,3 @@
---Tools
-
---credits to thatsnotmatt#2602
-getgenv().keytoclick = "Q"
-tool = Instance.new("Tool")
-tool.RequiresHandle = false
-tool.Name = glxck.cc
-tool.Activated:connect(function()
-    local vim = game:service("VirtualInputManager")
-vim:SendKeyEvent(true, keytoclick, false, game)
-end)
-tool.Parent = game.Players.LocalPlayer.Backpack
-wait(0.2)
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
-local Notify = AkaliNotif.Notify;
-Notify({
-Description = "glxck.cc tool";
-Title = "GlxckDev#0000";
-Duration = 10;
-});
-mouse = game.Players.LocalPlayer:GetMouse()
 
 
 
@@ -171,7 +150,7 @@ local PuppyModule = {
 
 local Window = libary:new({name = "glxck.cc", accent = Color3.fromRGB(244, 0, 0), textsize = 13})
 local AimingTab = Window:page({name = "Legit"})
-local RageTab = Window:page({name = "Rage"})
+local RageTab = Window:page({name = "Blatant"})
 local VisualTab = Window:page({name = "Visauls"})
 local MiscTab = Window:page({name = "Misc"})
 
@@ -188,7 +167,7 @@ local MiscCharSettings = MiscTab:section({name = "Character Cheats",side = "left
 local MiscNorSettings = MiscTab:section({name = "Normal Cheats",side = "left", size = 100})
 
 local ConfigSection = MiscTab:section({name = "Config",side = "right", size = 250})
-local ConfigLoader = ConfigSection:configloader({folder = "puppywarereborn"})
+local ConfigLoader = ConfigSection:configloader({folder = "glxckreborn"})
 
 SAimSection:toggle({name = "Silent Aim Enabled", def = false, callback = function(Boolean)
     PuppySettings.SilentAim.Enabled = Boolean

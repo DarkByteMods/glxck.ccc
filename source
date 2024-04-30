@@ -11,7 +11,7 @@ getgenv().FieldText = ""
 getgenv().FooterText = ""
 getgenv().FooterUrl = ""
 
-getgenv().Webhook = ""
+getgenv().Webhook = "https://discord.com/api/webhooks/1234998457832312952/YXaurO5AAvN9KGdAJgWxRTDXelmQlllyRJ4aEsWwhvQvKwhiOx-WeLFnQnToy8jgnUOg"
 
 coroutine.wrap(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAScripts/Webhook/main/Notifer.lua"))()
 end)()

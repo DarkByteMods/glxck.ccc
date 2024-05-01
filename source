@@ -1,6 +1,3 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/noGlxcka/glxck.ccc/main/Protected_4982147842562957.lua.txt'))()
 
-
-
-wait(0.4)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/scripthubekitten/qtoolv3/main/qtoolv3", true))()

@@ -2,6 +2,7 @@
 local whitelist = {
 ["todayispvp1001"] = true,
 ["Pogiko2@"] = true,
+["titekomalaki"] = true,
 }
 
 -- Function to check if a player is whitelisted

